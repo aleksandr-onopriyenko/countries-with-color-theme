@@ -16,6 +16,9 @@ const Wrapper = styled.section`
     align-items: center;
     gap: 5rem;
   }
+  @media (min-width: 1024px) {
+    grid-template-columns: minmax(400px, 600px) 1fr;
+  }
 `;
 
 const InfoImage = styled.img`
@@ -131,6 +134,8 @@ function Info(props) {
               <b>Capital: </b>
               {capital}
             </ListItem>
+          </List>
+          <List>
             <ListItem>
               <b>Top Level Domain: </b>
               {topLevelDomain.map((domain) => <span key={domain}>{domain}</span>)}
