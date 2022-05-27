@@ -1,0 +1,12 @@
+{
+    "extends": ["airbnb", "react-app"],
+    "env": {
+        "node": true,
+        "es6": true,
+        "browser": true
+    },
+    "rules": {
+        "no-console": "off",
+        "import/prefer-default-export": 0
+    }
+}
