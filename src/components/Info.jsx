@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+import { filterByCode } from '../config';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -93,7 +95,14 @@ function Info(props) {
   } = props;
 
   const [neighbors, setNeighbors] = useState([]);
-  console.log(borders, setNeighbors);
+
+  useEffect(() => {
+    if (borders.length) {
+      axios.get(filterByCode(borders)).then(
+        ({ data }) => setNeighbors(data.map((country) => country.name)),
+      );
+    }
+  }, [borders]);
 
   return (
     <Wrapper>

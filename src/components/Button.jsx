@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const Button = styled.button`
   padding: 0 1rem;
   background-color: var(--color-ui-base);
   box-shadow: var(--shadow);
@@ -15,3 +15,5 @@ export const Button = styled.button`
   cursor: pointer;
   color: var(--color-text);
 `;
+
+export default Button;
