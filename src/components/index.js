@@ -1,4 +1,4 @@
-import App from './App';
+import Header from './Header';
 import Main from './Main';
 import Controls from './Controls';
 import List from './List';
@@ -7,5 +7,5 @@ import Button from './Button';
 import Info from './Info';
 
 export {
-  App, Main, Controls, Card, List, Button, Info,
+  Main, Controls, Card, List, Button, Info, Header,
 };

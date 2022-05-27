@@ -35,38 +35,35 @@ function HomePage({ countries, setCountries }) {
     handleSearch();
   }, [countries]);
 
+  if (!countries) return <h1>Countries are loading...</h1>;
+
   return (
     <>
       <Controls onSearch={handleSearch} />
-      {
-        filteredCountries
-          ? (
-            <List>
-              {filteredCountries.map((c) => {
-                const countryInfo = {
-                  img: c.flags.png,
-                  name: c.name,
-                  info: [
-                    {
-                      title: 'Population',
-                      description: c.population.toLocaleString(),
-                    },
-                    {
-                      title: 'Region',
-                      description: c.region,
-                    },
-                    {
-                      title: 'Capitajl',
-                      description: c.capital,
-                    },
-                  ],
-                };
-                return <Card key={c.name} onClick={() => navigate(`/countries/${c.name}`)} {...countryInfo} />;
-              })}
-            </List>
-          )
-          : <h2 style={{ textAlign: 'center', marginTop: '5rem', fontWeight: 'var(--fw-normal)' }}>The search has not given any results... :(</h2>
-      }
+      {(filteredCountries !== null && !filteredCountries) && <h2 style={{ textAlign: 'center', marginTop: '5rem', fontWeight: 'var(--fw-normal)' }}>The search has not given any results.. :(</h2>}
+      <List>
+        {filteredCountries && filteredCountries.map((c) => {
+          const countryInfo = {
+            img: c.flags.png,
+            name: c.name,
+            info: [
+              {
+                title: 'Population',
+                description: c.population.toLocaleString(),
+              },
+              {
+                title: 'Region',
+                description: c.region,
+              },
+              {
+                title: 'Capitajl',
+                description: c.capital,
+              },
+            ],
+          };
+          return <Card key={c.name} onClick={() => navigate(`/countries/${c.name}`)} {...countryInfo} />;
+        })}
+      </List>
     </>
   );
 }
